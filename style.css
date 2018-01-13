@@ -1,0 +1,19 @@
+.err {
+    color: red;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.required-item label:after {
+    content: '*';
+    color: red;
+}
+
+.footnote {
+    padding: 10px 15px;
+    background-color: #dedede;
+}
+
+.footnote .star {
+    color: red;
+}
