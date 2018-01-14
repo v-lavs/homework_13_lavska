@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // тестирует инпуты на условия ввода - test_input
     $user_name = mysqli_real_escape_string($conn, test_input($_POST['user_name']));
     $last_name = mysqli_real_escape_string($conn, test_input($_POST['last_name']));
+    $age = mysqli_real_escape_string($conn, test_input($_POST['age']));
     $gender = mysqli_real_escape_string($conn, test_input($_POST['gender']));
     $hobbies = mysqli_real_escape_string($conn, test_input($_POST['hobbies']));
     $nickname = mysqli_real_escape_string($conn, test_input($_POST ['nickname']));
@@ -56,13 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //вставляем в мою таблицу в столбци значения с полей формы
     $sql = "INSERT INTO users (user_name, last_name, age, gender, hobbies, nickname, birthday, card_number,
  password, myself, category) 
-            VALUES (\"$user_name\", \"$last_name\", \"$age\", \"$gender\", \"$hobbies\", \"$nickname\", \"$birthday\", 
+            VALUES (\"$user_name\", \"$last_name\",\"$age\", \"$gender\", \"$hobbies\", \"$nickname\", \"$birthday\", 
             \"$card_number\", \"$hashed_password\", \"$myself\", \"$category\")";
 
-// проверяем чтоб небыли пустыми поля, если если переменные не ошибки, т.е. существуют  - подключаем к базе
+// проверяем чтоб небыли пустыми поля, если  переменные не ошибки, т.е. существуют  - подключаем к базе
     if (!$user_name_err and !$last_name_err and !$nickname_err and !$password_err) {
         if ($conn->query($sql) === TRUE) {
-            $success_msg = "<p>You are successfully registered. <a href='login.php'>Please Log In.</a></p>";
+            $success_msg = "<p class='message'>You are successfully registered. <a href='login.php'>Please Log In.</a></p>";
             $user_name = $last_name = $gender = $hobbies = $nickname = $birthday = $card_number = $password = $myself = $category = '';
         } else {
             echo "<h5>Something went wrong</h5>";
@@ -83,9 +84,9 @@ endif;
 ?>
 
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-    <ul>
-        <li class="required-item">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="user-form">
+    <ul class="user-form-list">
+        <li class="list-item">
             <label for="user-name">Name:</label>
             <input type="text" name="user_name" id="user-name" value="<?php echo $user_name; ?>">
             <? if ($user_name_err) :
@@ -93,7 +94,7 @@ endif;
             endif;
             ?>
         </li>
-        <li class="required-item">
+        <li class="list-item">
             <label for="user-last-name">Last name:</label>
             <input type="text" name="last_name" id="user-last-name" value="<?php echo $last_name; ?>">
             <? if ($last_name_err) :
@@ -101,7 +102,7 @@ endif;
             endif;
             ?>
         </li>
-        <li class="required-item">
+        <li class="list-item">
             <label for="nickname">Nickname:</label>
             <input type="text" name="nickname" id="nickname" value="<?php echo $nickname; ?>">
             <? if ($user_name_err) :
@@ -109,7 +110,7 @@ endif;
             endif;
             ?>
         </li>
-        <li class="required-item">
+        <li class="list-item">
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" value="<?php echo $password; ?>">
             <? if ($password_err) :
@@ -117,17 +118,17 @@ endif;
             endif;
             ?>
         </li>
-        <li>
+        <li class="list-item">
             <label for="user-age">Age:</label>
             <input type="text" name="age" id="user-age" value="<?php echo $age; ?>">
         </li>
-        <li>
+        <li class="list-item inline" >
             <label><input type="radio" name="gender" <?php if (isset($gender) && $gender == "male") echo "checked"; ?>
                           value="male" checked="checked">male gender</label>
             <label><input type="radio" name="gender" <?php if (isset($gender) && $gender == "female") echo "checked"; ?>
                           value="female">female gender</label>
         </li>
-        <li>
+        <li class="list-item">
             <label for="hobbies">list of hobbies</label>
             <select name="hobbies" id="hobbies">
                 <option value="">Choose your option</option>
@@ -137,20 +138,16 @@ endif;
                 <option value="dance">Dance</option>
             </select>
         </li>
-        <li>
+        <li class="list-item">
             <label for="birthday">Birthday:</label>
             <input type="date" name="birthday" id="birthday" value="<?php echo $birthday; ?>">
         </li>
-        <li>
+        <li class="list-item">
             <label for="card_number">Bankcard number:</label>
             <input type="text" name="card_number" id="card_number" value="<?php echo $card_number; ?>">
 
         </li>
-        <li>
-            <label for="myself">Briefly about myself in general</label>
-            <textarea name="myself" cols="50" rows="8" id="myself" value="<?php echo $myself; ?>"></textarea>
-        </li>
-        <li>
+        <li class="list-item">
             <label for="category">list of category</label>
             <select name="category" id="category">
                 <option value="">Choose your option</option>
@@ -159,7 +156,14 @@ endif;
                 <option value="art">Art</option>
                 <option value="dance">Dance</option>
             </select>
-            <button type="submit">Submit</button>
+        </li>
+        <li class="list-item">
+            <label for="myself">Briefly about myself in general</label>
+            <textarea name="myself" cols="50" rows="8" id="myself" value="<?php echo $myself; ?>"></textarea>
+        </li>
+
+        <li class="list-item submit">
+            <button type="submit">Sign Up</button>
         </li>
     </ul>
     <p class="footnote"><span class="star">*</span> - required field.</p>

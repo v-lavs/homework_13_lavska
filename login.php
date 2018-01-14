@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         if(password_verify($password, $hashed_password)){
                             session_start();
                             $_SESSION['nickname'] = $nickname;
-                            $log_msg = 'You are logged in.';
+                            $log_msg = "<p class='message'>You are logged in.</p>";
                         } else{
                             $password_err = 'The password you entered was not valid.';
                         }
@@ -65,13 +65,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php
 if($log_msg) :
-    echo "<p>$log_msg</p>";
+    echo $log_msg;
 endif;
 ?>
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-    <ul>
-        <li>
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="user-form">
+    <ul class="user-form-list">
+        <li class="list-item">
             <label for="user-login">Enter your nickname:</label>
             <input type="text" name="nickname" id="user-login">
             <? if($nickname_err) :
@@ -79,7 +79,7 @@ endif;
                 endif;
             ?>
         </li>
-        <li>
+        <li class="list-item">
             <label for="password">Password:</label>
             <input type="password" name="password" id="password">
             <? if($password_err) :
@@ -87,8 +87,8 @@ endif;
             endif;
             ?>
         </li>
-        <li>
-            <input type="submit" value="Submit">
+        <li class="list-item submit">
+            <button type="submit">Sign In</button>
         </li>
     </ul>
 </form>
