@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 13 2018 г., 17:28
+-- Время создания: Янв 20 2018 г., 12:36
 -- Версия сервера: 5.6.37
 -- Версия PHP: 5.5.38
 
@@ -48,9 +48,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `last_name`, `age`, `gender`, `password`, `hobbies`, `nickname`, `birthday`, `card_number`, `myself`, `category`) VALUES
-(51, 'name', 'lastname', 0, 'male', '$2y$10$ZqMDxJ6to5yMTydi74j/qeL2pZO0zEGsO71Reg02ePpDEOAL6swPG', 'travels', 'nickname', '2018-01-24', 1232332321312, 'Lorem ipsum dolor sit amet, ius ut etiam movet iisque, vix atqui inciderint et. Sit id putant euismod mnesarchum. Mea te zril incorrupte, eam te meis epicuri copiosae. Enim tempor ea est, te purto invidunt deserunt ius, per an quod vidit prodesset. Delectus adipisci id sed, dicam consul abhorreant pro an. Ei duo adipiscing accommodare delicatissimi, est te tale epicurei periculis.', 'recreation'),
-(52, 'Vanda', 'Lavs', 0, 'female', '$2y$10$Za07jAbySi6A0pteaDVXku2ewgw7uueBugnkl2wkW0nG.vTTSKTxe', 'travels', 'v_lavs', '2016-07-01', 9503823023011, 'Eam id meliore phaedrum liberavisse. Atqui electram intellegebat ex vel. Id unum fabellas vim, usu ad quaestio salutandi deterruisset, oratio dissentias vel ei. Sadipscing comprehensam ne mei, mea ferri mazim singulis ne, has consul explicari referrentur te. Quo eu alii primis inimicus, sumo possit aliquip mea te. Agam ferri consulatu et his.', 'art'),
-(53, 'alex', 'lalala', 0, 'male', '$2y$10$BKdAcYx6U5GmHC82HLSMeeEAZPxmf4dD4ARcDAvoMothPfw.AZsaO', 'football', 'blablala', '1965-07-13', 34567890976543, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at ducimus, laborum maxime minima non\r\n        numquam optio quo vitae. Accusamus ad adipisci, atque, consectetur corporis cupiditate dignissimos dolorum ex\r\n        expedita harum illo iure laudantium magnam mollitia nulla officiis possimus quam quis recusandae repudiandae', 'sport');
+(74, 'qqq', 'www', 21, 'male', 'e00cf25ad42683b3df678c61f42c6bda', 'football', 'admin1', '1999-01-01', 12344555, 'qwwee rtyui uioi uiuoip', 'sport'),
+(75, 'eee', 'eet', 34, 'female', '1844156d4166d94387f1a4ad031ca5fa', 'handmade', 'admin2', '1986-12-31', 567898765, 'wertyu tyuio uyiovb jkh', 'dance'),
+(76, 'gfds', 'ytr', 12, 'female', 'd5133c970ad3a99c2248fed76970d06c', 'travels', 'admin4', '2000-03-06', 87654365432, 'asdfghjk zxcfvgbhjnm  kjhgfds oiuytre sdcvb', 'dance');
 
 --
 -- Индексы сохранённых таблиц
@@ -60,7 +60,8 @@ INSERT INTO `users` (`id`, `user_name`, `last_name`, `age`, `gender`, `password`
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `card_number` (`card_number`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -70,7 +71,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
