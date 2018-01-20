@@ -22,18 +22,22 @@
     justify-content: space-around;
 }
 .nav-list .list-item {
-    border: 2px solid #008B8B;
-    padding:10px 25px;
     font-size: 20px;
-    border-radius: 5px;
-    background: #3CB371;
-}
-.nav-list .list-item a {
-    text-decoration: none;
-    color: #ffffff;
 }
 
-.nav-list .list-item:hover {
+.nav-list .list-item a {
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    background: #3CB371;
+    transition: .35s;
+    border-radius: 5px;
+    border: 2px solid #008B8B;
+}
+
+.nav-list .list-item a:hover {
     background: #2E8B57;
 }
 
@@ -96,6 +100,7 @@
 
 .list-item button:hover {
     background: #7CFC00;
+    transition: .35s;
 }
 
 .list-item.submit {

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $card_number = mysqli_real_escape_string($conn, test_input($_POST['card_number']));
 
     $password = mysqli_real_escape_string($conn, test_input($_POST['password']));
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = md5($password);
 
     $myself = mysqli_real_escape_string($conn, test_input($_POST['myself']));
     $category = mysqli_real_escape_string($conn, test_input($_POST['category']));
@@ -89,7 +89,7 @@ endif;
         <li class="list-item">
             <label for="user-name">Name:</label>
             <input type="text" name="user_name" id="user-name" value="<?php echo $user_name; ?>">
-            <? if ($user_name_err) :
+            <?php if ($user_name_err) :
                 echo "<p class='err'>$user_name_err</p>";
             endif;
             ?>
@@ -97,7 +97,7 @@ endif;
         <li class="list-item">
             <label for="user-last-name">Last name:</label>
             <input type="text" name="last_name" id="user-last-name" value="<?php echo $last_name; ?>">
-            <? if ($last_name_err) :
+            <?php if ($last_name_err) :
                 echo "<p class='err'>$last_name_err</p>";
             endif;
             ?>
@@ -105,7 +105,7 @@ endif;
         <li class="list-item">
             <label for="nickname">Nickname:</label>
             <input type="text" name="nickname" id="nickname" value="<?php echo $nickname; ?>">
-            <? if ($user_name_err) :
+            <?php if ($user_name_err) :
                 echo "<p class='err'>$nickname_err</p>";
             endif;
             ?>
@@ -113,7 +113,7 @@ endif;
         <li class="list-item">
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" value="<?php echo $password; ?>">
-            <? if ($password_err) :
+            <?php if ($password_err) :
                 echo "<p class='err'>$password_err</p>";
             endif;
             ?>
